@@ -4,7 +4,7 @@ $(document).ready(function() {
     days: ["Domingo", "Lunes", "Martes", "Miercoles", "Juevez", "Viernes", "Sabado"],
     daysShort: ["D", "L", "M", "W", "J", "V", "S"],
     daysMin: ["D", "L", "M", "W", "J", "V", "S"],
-    months: ["C1", "C2", "C3", "C4", "", "", "", "", "", "", "", ""],
+    months: ["1/3", "4/6", "7/9", "10/12", "", "", "", "", "", "", "", ""],
     monthsShort: ["Ene&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mar", "Abr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;May&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jun", "Jul&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sep", "Oct&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nov&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dic", "", "", "", "", "", "", "", ""],
     today: "Today",
     clear: "Clear",
@@ -73,21 +73,55 @@ $('#buscar').click(function(event) {
   event.preventDefault();
   var nombre =$('#nombre').val();
   var tipo =$('#tipo').val();
-  $.ajax({
-    url: '/src/controladores/c_mesas.php',
-    type: 'POST',
-    dataType: 'json',
-    data: {operacion: 'buscar', nombre: nombre, tipo:tipo}
-  })
-  .done(function(e) {
-    console.log(e);
-    var vista= e;
-    $('#vista_mesas').html('');
-    for (var i = 0; i < vista.length; i++) {
-      $('#vista_mesas').append(vista[i]);
+  if ($('#div_opcfecha').css('display') == 'none') {
+    $.ajax({
+      url: '/src/controladores/c_mesas.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {operacion: 'buscar', nombre: nombre, tipo:tipo}
+    })
+    .done(function(e) {
+      var vista= e;
+      $('#vista_mesas').html('');
+      for (var i = 0; i < vista.length; i++) {
+        $('#vista_mesas').append(vista[i]);
+      }
+      $('#resultados').text( vista.length+ '  Resultados Encontrados');
+    })
+  }else {
+    var tipo_fecha=$('input[type=radio][name=tipo_fecha]:checked').val();
+    var fecha="";
+    switch (tipo_fecha) {
+      case 'ano':
+        fecha = $('#ano').val();
+        break;
+      case 'mes':
+        fecha = $('#mes_f').val();
+        break;
+      case 'semana':
+        fecha = $('#semana').val();
+        break;
+      case 'cuatrimestre':
+        fecha = $('#quarter').val();
+        break;
     }
-    $('#resultados').text( vista.length+ '  Resultados Encontrados');
-  })
+
+    $.ajax({
+      url: '/src/controladores/c_mesas.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {operacion: 'buscar_fecha', nombre: nombre, tipo:tipo, fecha_t: tipo_fecha , fecha: fecha }
+    })
+    .done(function(e) {
+      var vista= e;
+      $('#vista_mesas').html('');
+      for (var i = 0; i < vista.length; i++) {
+        $('#vista_mesas').append(vista[i]);
+      }
+      $('#resultados').text( vista.length+ '  Resultados Encontrados');
+    })
+  }
+
 });
 
 

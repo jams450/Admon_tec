@@ -23,7 +23,7 @@ $(document).ready(function() {
 });
 
 
-$('#registro_usuario').click(function(event) {
+$('#registro_cliente').click(function(event) {
   event.preventDefault();
   if ($('#newcustomer').valid()) {
     var datos = $('#newcustomer').serializeArray();
@@ -46,6 +46,13 @@ $('#registro_usuario').click(function(event) {
             }, 1500);
 
             break;
+          case 'correo_mal':
+            swal({
+                type: 'error',
+                title: 'Ocurrio un error',
+                text: 'El correo ya esta asociado a una cuenta',
+              })
+           break;
           case 'error':
           swal({
               type: 'error',

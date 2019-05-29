@@ -1,11 +1,9 @@
 <?php
-      /*include_once($_SERVER["DOCUMENT_ROOT"] . "/src/model/conexion.php");
-      $delegaciones=$conexion->query("select delegacion from delegaciones");
-      while ($result=$delegaciones->fetch_assoc()) {
-                      $lista.='<option value='.$result['delegacion'].'>';
-                  }
-      $conexion->close();*/
- ?>
+    session_start();
+    if (isset($_SESSION['id_sesion_cliente'])) {
+        header("location: /index.php");
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -142,6 +140,8 @@
     <?php include_once($_SERVER['DOCUMENT_ROOT'].'/views/footer.php'); ?>
 
     <?php include_once($_SERVER['DOCUMENT_ROOT'].'/views/scriptjs.php'); ?>
+
+        <script type="text/javascript" src="assets/js/sweetalert2.min.js"></script>
         <script type="text/javascript" src="src/js/alta_usuario.js"></script>
 
   </body>

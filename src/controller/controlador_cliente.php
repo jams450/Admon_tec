@@ -28,14 +28,13 @@
         break;
 
       case 'login':
-        $comprobacion_usuario=$conexion->query("select * from clientes where nombre='".$_POST['nombre_login']."' and passwd = '".$_POST['password_login']."' ");
-        if ($result=$comprobacion_usuario->fetch_assoc()) {
+        $comprobacion_correocliente=$conexion->query("select * from clientes where correo='".$_POST['correo_login']."' and passwd = '".$_POST['password_login']."' ");
+        if ($result=$comprobacion_correocliente->fetch_assoc()) {
             $msj="exito";
             session_start();
-            $_SESSION['id_sesion_usuario']=$result['idusuario'];
-            $_SESSION['nombre_usuario']=$result['username'];
-            $_SESSION['username_usuario']=$result['nombre'];
-            $_SESSION['appat_usuario']=$result['appat'];
+            $_SESSION['id_sesion_cliente']=$result['idcliente'];
+            $_SESSION['nombre_cliente']=$_POST['nombre'];
+            $_SESSION['appat_cliente']=$_POST['appat'];
         } else {
             $msj="error";
         }

@@ -42,14 +42,14 @@ $('#registro_cliente').click(function(event) {
               title: 'Cliente registrado',
             });
             setTimeout(function(){
-                window.open('/index.php');
+              document.location.href = '/index.php';
             }, 1500);
 
             break;
           case 'correo_mal':
             swal({
                 type: 'error',
-                title: 'Ocurrio un error',
+                title: 'Ocurrió un error',
                 text: 'El correo ya esta asociado a una cuenta',
               })
            break;

@@ -17,6 +17,7 @@
           </div>
         </li>-->
         <li class="nav-item"><a href="mesas.php" class="nav-link">Buscar mesas</a></li>
+        <li class="nav-item"><a href="productos.php" class="nav-link">Regalos mas solicitados</a></li>
         <li class="nav-item"><a href="registro.php" class="nav-link">Registrarse</a></li>
         <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>
         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>

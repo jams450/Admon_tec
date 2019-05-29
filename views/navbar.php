@@ -15,7 +15,8 @@
             <a class="dropdown-item" href="cart.html">Carrito</a>
           </div>
         </li>
-        <li class="nav-item"><a href="registro.php" class="nav-link">Registrarse</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Registrarse</a></li>
+        <li class="nav-item"><a href="/views/registro_usuario.php" class="nav-link">Registro</a></li>
         <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>
         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 

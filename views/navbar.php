@@ -27,9 +27,24 @@
         <li class="nav-item"><a href="mesas.php" class="nav-link">Buscar mesas</a></li>
         <li class="nav-item"><a href="productos_lista.php" class="nav-link">Regalos</a></li>
         <li class="nav-item"><a href="productos.php" class="nav-link">Regalos mas solicitados</a></li>
-        <li class="nav-item"><a href="registro_cliente.php" class="nav-link">Registro</a></li>
+        <?php
+        if (isset($_SESSION['id_sesion_cliente'])) {
+            echo '
+            <li class="nav-item"><a href="crear_mesa.php" class="nav-link">Crear Mesa</a></li>
+            <li class="nav-item"><a href="logout.php" class="nav-link">Cerrar Sesion</a></li>
+            ';
+        } else {
+            echo '
+          <li class="nav-item"><a href="registro_cliente.php" class="nav-link">Registro</a></li>
+          <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>
+          ';
+        }
 
-        <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>
+
+          ?>
+
+
+
         <li class="nav-item cta cta-colored"><a href="carrito.php" class="nav-link"><span class="icon-shopping_cart"></span>[<?=$cantidad?>]</a></li>
 
       </ul>

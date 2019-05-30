@@ -37,8 +37,28 @@
         //}
         break;
 
-      default:
-        // code...
+      case 'producto':
+        $eventos=$conexion->query(" select idarticulo,nombre, categoria, precio from articulos inner join categoria_articulo
+                               on categoria_articulo.idcategoria=articulos.idcategoria where idarticulo= " .$_POST['id']);
+        while ($result=$eventos->fetch_assoc()) {
+            $salida='
+          <tr class="text-center">
+            <td class="product-remove"><a href="#" class="quitar" id="remove_'.$result['idarticulo'].'"><span class="ion-ios-close "></span></a></td>
+            <td  class="image-prod"><div class="img" style="background-image:url(images/productos/'.$result['idarticulo'].'.jpg);"></div></td>
+            <td class="product-name">
+              <h3>'.$result['nombre'].'</h3>
+              <p>Categoria:    '.$result['categoria'].'</p>
+            </td>
+            <td class="price">$ <span class="precio_l">'.$result['precio'].'</span></td>
+            <td class="quantity">
+              1
+            </td>
+          </tr>
+
+          ';
+        }
+        $conexion->close();
+        die(json_encode($salida));
         break;
     }
 

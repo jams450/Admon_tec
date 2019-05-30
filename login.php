@@ -57,7 +57,7 @@
     <?php include_once($_SERVER['DOCUMENT_ROOT'].'/views/scriptjs.php'); ?>
 
         <script type="text/javascript" src="assets/js/sweetalert2.min.js"></script>
-        <script type="text/javascript" src="src/js/alta_usuario.js"></script>
+        <script type="text/javascript" src="src/js/login_usuario.js"></script>
 
   </body>
 </html>

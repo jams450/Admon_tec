@@ -1,6 +1,9 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/src/model/conexion.php");
 
+require_once $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
+
+
 $operacion = $_POST['operacion'];
 switch ($operacion) {
   case 'buscar':
@@ -23,6 +26,9 @@ switch ($operacion) {
                               group by mesaderegalos.idarticulo");
     //die(json_encode($sql));
     $vista_mesas= array();
+
+    $lista="";
+
     while ($result=$eventos->fetch_assoc()) {
         $vista_mesas[]='
         <div class="col-sm col-md-6 col-lg-3">
@@ -41,11 +47,52 @@ switch ($operacion) {
                 </div>
               </div>
               <hr>
+              <p class="bottom-area d-flex">
+    							<a href="#" id="articulo_'.$result['idarticulo'].'" class="add-to-cart anadir"><span>Añadir al carrito <i class="ion-ios-add ml-1"></i></span></a>
+    						</p>
+
             </div>
           </div>
         </div>
 
       ';
+
+
+        if (isset($_POST['pdf'])) {
+            $lista.='
+          <tr>
+          <td style="border:0px">'.$result['idarticulo'].'</td>
+          <td style="border:0px">'.$result['nombre'].'</td>
+          <td style="border:0px">'.$result['cantidad'].'</td>
+          </tr>
+        ';
+        }
+    }
+
+    if (isset($_POST['pdf'])) {
+        $encabezado='
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>CANTIDAD</th>
+      ';
+
+        $mpdf = new \Mpdf\Mpdf();
+
+        $archivo= file_get_contents('lista.html');
+
+        $archivo=str_replace('{titulo}', 'Regalos', $archivo);
+        $archivo=str_replace('{fecha}', date("Y-m-d H:i:s"), $archivo);
+        $archivo=str_replace('{encabezado}', $encabezado, $archivo);
+        $archivo=str_replace('{lista}', $lista, $archivo);
+
+
+        // Write some HTML code:
+        $mpdf->WriteHTML($archivo);
+
+        // Output a PDF file directly to the browser
+        $mpdf->Output('Lista_Regalos.pdf', \Mpdf\Output\Destination::FILE);
+        die(json_encode('pdf'));
+
     }
     die(json_encode($vista_mesas));
     break;

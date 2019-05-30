@@ -1,22 +1,22 @@
+
+<?php
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html >
 
   <?php include_once($_SERVER['DOCUMENT_ROOT'].'/views/head.php'); ?>
 
   <style media="screen">
-      .ftco-section {
-      padding: 3em 0;
-      position: relative;
-    }
 
-    .bootstrap-datepicker-widget .datepicker-days table tbody tr:hover {
+    .datepicker .datepicker-days table tbody tr:hover {
+
         background-color: #eee;
     }
     .datepicker2 table tr td span {
       width: 100%;
     }
-
-
 
   </style>
   <body>
@@ -34,7 +34,8 @@
       </div>
     </div>
 
-		<section class="ftco-section bg-light">
+		<section style="padding-top: 3em;" class="ftco-section bg-light">
+
       <div style="background:white; margin-bottom:30px" class="container">
         <div class="row">
           <div class="col-sm-3">
@@ -68,9 +69,13 @@
             </p>
           </div>
           <div class="col-sm-2 text-center">
-            <p style="padding-top: 30px">
+
+            <p style="padding-top: 15px">
               <a href="#" id="mas_opc" class="">+ Mas Opciones</a>
             </p>
+            <p style="padding-top: 10px">
+              <a href="#" id="imprimir" class=""> Imprimir</a>
+
           </div>
 
           <div class="col-sm-4" style="display:none" id="div_opcfecha">

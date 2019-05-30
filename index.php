@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+ ?>
 <!DOCTYPE html>
 <html >
   <?php include_once($_SERVER['DOCUMENT_ROOT'].'/views/head.php'); ?>
@@ -14,10 +17,10 @@
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <h3 class="v">Mesa de Regalos - XXXXX</h3>
+          <h3 class="v">Mesa de Regalos - El detalle perfecto</h3>
           <h3 class="vr">Desde - 2019</h3>
           <div class="col-md-11 ftco-animate text-center">
-            <h1>Mesa de Regalos</h1>
+            <h1>El detalle perfecto</h1>
             <h2><span>Todo para tus Eventos</span></h2>
           </div>
           <div class="mouse">

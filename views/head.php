@@ -1,5 +1,5 @@
 <head>
-  <title>Modist</title>
+  <title>El detalle perfecto</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -23,5 +23,6 @@
 
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="js/sweetalert/sweetalert2.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+
+<body>
+  <table style="width:100%; text-align:center">
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td style="border:0px">
+        <h3>MESA DE REGALOS <br> "El Detalle Perfecto"</h3>
+      </td>
+      <td style="border:0px">
+        <table style="width:100%; text-align:left">
+          <tr style="background: gainsboro; ">
+            <th>El Detalle Perfecto, S.A. de C.V</th>
+          </tr>
+          <tr>
+            <td style="border:0px">Sur 73 # 4217</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Colonia Asturias</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Delegacion Cuauhtemoc</td>
+          </tr>
+          <tr>
+            <td style="border:0px">CP 06850 CDMX</td>
+          </tr>
+          <tr>
+            <td style="border:0px">RFC: ANE140618P37</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Regimen Fiscal: 601</td>
+          </tr>
+        </table>
+      </td>
+      <td style="border:0px">
+        <table style="width:100%;  text-align:left">
+          <tr style="background: gainsboro;">
+            <th>Factura Electrónica - CFDI</th>
+          </tr>
+          <tr>
+            <td style="border:0px">Fecha/Hora de certificacion</td>
+          </tr>
+          <tr>
+            <td style="border:0px">{fecha_certificacion}</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Fecha/Hora de emision</td>
+          </tr>
+          <tr>
+            <td style="border:0px">{fecha_emision}</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Version, Serie y Folio</td>
+          </tr>
+          <tr>
+            <td style="border:0px">3.3 A 378348{#}<td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <br>
+
+  <table style="width:100%; text-align:center">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td style="  border: 0.5px solid black;">
+        <table style="width:100%; text-align:left">
+          <tr style="background: gainsboro; ">
+            <th colspan="2"> Receptor del CFDI</th>
+          </tr>
+          <tr>
+            <td style="border:0px">RFC:</td>
+            <td style="border:0px">{rfc}</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Nombre:</td>
+            <td style="border:0px">{cliente}</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Direccion Fiscal:</td>
+            <td style="border:0px">{direccion}</td>
+          </tr>
+          <tr>
+            <td style="border:0px">Uso del CFDI :</td>
+            <td style="border:0px"> P01 Por Definir</td>
+          </tr>
+        </table>
+      </td>
+      <td style="  border: 0.5px solid black;">
+        <table style="width:100%; text-align:left">
+          <tr>
+            <th></th>
+          </tr>
+          <tr style="background: gainsboro; ">
+            <td style="border:0px">Folio Fiscal</td>
+          </tr>
+          <tr>
+            <td style="border:0px">018ED15F-772E-47BE-8065-B61BC0C24AB2</td>
+          </tr>
+          <tr style="background: gainsboro; ">
+            <td style="border:0px">No. Certificado Digital del Emisor</td>
+          </tr>
+          <tr>
+            <td style="border:0px">00001000000414562186</td>
+          </tr>
+          <tr style="background: gainsboro; ">
+            <td style="border:0px">No. Certificado Digital del SAT</td>
+          </tr>
+          <tr>
+            <td style="border:0px">00001000000404477432</td>
+          </tr>
+        </table>
+      </td>
+
+    </tr>
+  </table>
+
+  <br>
+  <br>
+  <table style="width:100%; text-align:center; border: 0.5px solid black">
+    <tr>
+      <th>Detalles del pedido</th>
+    </tr>
+    <tr>
+      <td style="border:0px">
+        <table style="width:100%; text-align:left">
+          <tr style="background: gainsboro; ">
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th>Valor Unitario</th>
+            <th>Importe</th>
+          </tr>
+          {productos}
+          <tr>
+          </tr>
+        </table>
+      </td>
+
+
+    </tr>
+  </table>
+
+  <br>
+  <br>
+
+  <table style="width:100%; text-align:center">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td style="  border: 0.5px solid black;">
+        <table style="width:100%; text-align:left">
+          <tr>
+            <th> Detalles del Comprobante </th>
+            <th></th>
+          </tr>
+          <tr style="background: gainsboro; ">
+            <td style="border:0px">Forma de pago</td>
+            <td style="border:0px">Tipo de comprobante</td>
+          </tr>
+          <tr>
+            <td style="border:0px">04 - Tarjeta de Credito</td>
+            <td style="border:0px">I</td>
+          </tr>
+          <tr style="background: gainsboro; ">
+            <td style="border:0px">Método de pago</td>
+            <td style="border:0px">Moneda</td>
+          </tr>
+          <tr>
+            <td style="border:0px">PUE - Pago en una sola exhibicion</td>
+            <td style="border:0px">Peso Mexicano (MXN)</td>
+          </tr>
+          <tr style="background: gainsboro; ">
+            <td style="border:0px">Lugar de expedición</td>
+            <td style="border:0px">Tasa de cambio</td>
+          </tr>
+          <tr>
+            <td style="border:0px">05348</td>
+            <td style="border:0px">1</td>
+          </tr>
+        </table>
+      </td>
+      <td style="  border: 0.5px solid black;">
+        <table style="width:100%; text-align:left">
+          <tr style="background: gainsboro; ">
+            <th colspan="2">Importe</th>
+          </tr>
+          <tr>
+            <td style="border:0px">Subtotal</td>
+            <td style="border:0px">{subtotal}</td>
+          </tr>
+          <tr>
+            <td style="border:0px">IVA Tasa 16%</td>
+            <td style="border:0px">{iva}</td>
+          </tr>
+
+          <tr>
+            <td style="border:0px">Total</td>
+            <td style="border:0px">{total}</td>
+          </tr>
+
+        </table>
+      </td>
+
+    </tr>
+  </table>
+
+  <br>
+  <br>
+
+  <table style="width:100%; text-align:left; border: 0.5px solid black">
+    <tr>
+      <th>Importe con letra</th>
+    </tr>
+    <tr>
+      <td style="border:0px">
+        {letra}
+      </td>
+    </tr>
+  </table>
+
+
+  <br>
+  <br>
+
+  <table style="width:100%; text-align:left; border: 0.5px solid black">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr  >
+      <td style="border:0px; background: gainsboro; " >
+        Cadena original del complemento de certificación digital del SAT
+      </td>
+      <td rowspan="6" style="border:0px">
+        <img src="/images/qr.png" alt="">
+      </td>
+    </tr>
+    <tr>
+      <td style="border:0px">
+        ||1.1|018ED15F-772E-47BE-8065-B61BC0C24AB2|2019-05-29T21:16:
+        25|EME000602QR9|mGb9Cag4mamcqMdAA8aSEx2h8DeGL9smhs4/MgQZhSacoN4G+6nACmPXMi5XHaD9l2gxLV36R3ooPR3KlOddgtYSn8LSgTvQ9hdNxzWFOV
+        HQH+4/l2yMowG1jA97O4OevL7RVwXTot24Kl20o5hhzv08+rezB+OLgsXD+MlSPEkNc+BQ6vDtF49vTCQzCFdS7LvUhHlx7QCXRjbfejrDVlIgsZ7i1MXoqaTz
+        KH6LiB8ORHkyqUKFX0LAS410IncnYPjzJH52fWURDxlG43PHgfsHlD9bFAUocDIPmB3FW06Mr9hz1CT8D6oTDryDsl5NZ4U9a66V1yJA09AoSbepOg==|00001
+        000000404477432||
+      </td>
+
+    </tr>
+    <tr >
+      <td style="border:0px; background: gainsboro;">
+        Sello digital del CFDI
+      </td>
+
+    </tr>
+    <tr>
+      <td style="border:0px">
+        mGb9Cag4mamcqMdAA8aSEx2h8DeGL9smhs4/MgQZhSacoN4G+6nACmPXMi5XHaD9l2gxLV36R3ooPR3KlOddgtYSn8LSgTvQ9hdNxzWFOVHQH+4/l2yMowG1jA
+        97O4OevL7RVwXTot24Kl20o5hhzv08+rezB+OLgsXD+MlSPEkNc+BQ6vDtF49vTCQzCFdS7LvUhHlx7QCXRjbfejrDVlIgsZ7i1MXoqaTzKH6LiB8ORHkyqUKF
+        X0LAS410Inc
+      </td>
+
+    </tr>
+    <tr >
+      <td style="border:0px; background: gainsboro;">
+        Sello digital del SAT
+      </td>
+
+    </tr>
+    <tr>
+      <td style="border:0px">
+        gJtouOxGL3u/dbFZfImV1xFXE8a1NPJ04TUCAux+gPEBbci0TMCsgnRpihL/K79syrdW4/D1GMTz0emKLsNmMY5DuJq7v7Rp1hs+gHTMSUpGo+DecKLeWsyYIB
+        56Fl8gIP3iTR+CZyLw6WhWmkxuox2TVYZ9n1zhTVNj3odEi3ToavB0v2YHWiqQub67bT769qUXc66SIyuhu4FT6Rw9r01bo07evTY9LpNKPW0nJ0U2BU4K2jit
+        zpfi5V1ASy2
+      </td>
+
+    </tr>
+    <tr>
+      <td style="border:0px; background: gainsboro;">
+        RfcProvCertif
+      </td>
+      <td style="border:0px">
+        EME000602QR9
+      </td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

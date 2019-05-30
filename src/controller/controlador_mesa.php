@@ -21,10 +21,10 @@
 
             if ($stmt->affected_rows) {
                 $msj="exito";
-                /*session_start();
+                session_start();
                 $_SESSION['id_sesion_cliente']=$result['idcliente'];
                 $_SESSION['nombre_cliente']=$result['nombre'];
-                $_SESSION['appat_cliente']=$result['appat'];*/
+                $_SESSION['appat_cliente']=$result['appat'];
             } else {
                 $msj="error";
             }

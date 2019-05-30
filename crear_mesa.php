@@ -29,7 +29,7 @@
         <div class="row justify-content-center">
           <div class=" ftco-animate">
           <form class="steps" method="post" id='newcustomer' name="newcustomer" action="/src/controller/controlador_mesa.php" enctype="multipart/form-data">
-            <h3 class="mb-4 billing-heading">Nueva Mesa de Regalos</h3>
+            <h3 class="mb-4 billing-heading">Agregar Mesa de Regalos</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-12">
 	                <div class="form-group">

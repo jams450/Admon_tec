@@ -12,15 +12,15 @@ $eventos=$conexion->query("select idevento,nombre,appat, apmat, nombreevento, fe
 if ($result=$eventos->fetch_assoc()) {
     $datos_evento=$result;
     $datos_evento['fecha_envio']=date('Y-m-d', strtotime($datos_evento['fechacierre']. ' + 7 days'));
+
     $eventos=$conexion->query("select mesaderegalos.idarticulo,nombre,precio,categoria, mesaderegalos.estatus, mesaderegalos.cantidad, sum(regalos_mesa.cantidad) as regalados from mesaderegalos
                               inner join articulos on articulos.idarticulo=mesaderegalos.idarticulo
                               inner join categoria_articulo on categoria_articulo.idcategoria=articulos.idcategoria
-                              left join regalos_mesa on regalos_mesa.idarticulo=articulos.idarticulo 
-                              inner join eventos on eventos.idevento=mesaderegalos.idevento where mesaderegalos.idevento= '.$id_evento.'
+                              left join regalos_mesa on regalos_mesa.idarticulo=articulos.idarticulo
+                              inner join eventos on eventos.idevento=mesaderegalos.idevento where mesaderegalos.idevento = ".$id_evento."
                               group by mesaderegalos.idarticulo ");
 
     $datos_articulos= array();
-    die(json_encode($eventos->num_rows));
     while ($result=$eventos->fetch_assoc()) {
         if ($result['estatus']==0) {
             $result['estatus']='NC';
@@ -33,6 +33,15 @@ if ($result=$eventos->fetch_assoc()) {
         }
 
         $datos_articulos[]=$result;
+    }
+
+    $eventos=$conexion->query("select regalos_mesa.idarticulo,nombre,precio,categoria, cantidad from regalos_mesa
+                              inner join articulos on articulos.idarticulo=regalos_mesa.idarticulo
+                              inner join categoria_articulo on categoria_articulo.idcategoria=articulos.idcategoria
+                              where regalos_mesa.idevento = ".$id_evento." and regalos_mesa.idarticulo not in (select idarticulo from mesaderegalos where idevento= ".$id_evento." ) ");
+    $datos_articulos2= array();
+    while ($result=$eventos->fetch_assoc()) {
+        $datos_articulos2[]=$result;
     }
 
 
@@ -65,8 +74,22 @@ if ($result=$eventos->fetch_assoc()) {
               <p>Categoria:    '.$datos_articulos[$i]['categoria'].'</p>
             </td>
             <td class="price">$ '.$datos_articulos[$i]['precio'].'</td>
-            <td class="price">'.$datos_articulos[$i]['regalados'].' de '.$datos_articulos[$i]['cantidad'].'</td>
+            <td class="price">'.$datos_articulos[$i]['cantidad'].'</td>
             <td class="total" style="font-size:30px;">'.$datos_articulos[$i]['estatus'].'</td>
+          </tr>
+        ';
+    }
+
+    for ($i=0; $i < count($datos_articulos2); $i++) {
+        $lista.='
+          <tr class="text-center">
+            <td  class="product-name">
+              <h3>'.$datos_articulos2[$i]['nombre'].'</h3>
+              <p>Categoria:    '.$datos_articulos2[$i]['categoria'].'</p>
+            </td>
+            <td class="price">$ '.$datos_articulos2[$i]['precio'].'</td>
+            <td class="price">'.$datos_articulos2[$i]['cantidad'].'</td>
+            <td class="total" style="font-size:30px;">C</td>
           </tr>
         ';
     }

@@ -150,7 +150,7 @@ if ($result=$eventos->fetch_assoc()) {
         						        	<p>Categoria:    '.$datos_articulos[$i]['categoria'].'</p>
         						        </td>
         						        <td class="price">$ '.$datos_articulos[$i]['precio'].'</td>
-                            <td class="price">'.$datos_articulos[$i]['regalados'].' de '.$datos_articulos[$i]['cantidad'].'</td>
+                            <td class="price">'.$datos_articulos[$i]['cantidad'].'</td>
         						        <td class="total" style="font-size:30px;">'.$datos_articulos[$i]['estatus'].'</td>
         						      </tr>
                         ';

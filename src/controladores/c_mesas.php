@@ -35,6 +35,7 @@ switch ($operacion) {
     //die(json_encode($sql));
     $vista_mesas= array();
     $lista="";
+
     while ($result=$eventos->fetch_assoc()) {
         $vista_mesas[]='
         <div class="col-sm col-md-6 col-lg-3">
@@ -42,6 +43,7 @@ switch ($operacion) {
             <a href="mesas_det.php?id='.$result['idevento'].'" class="img-prod"><img class="img-fluid" style="height: 200px; width:255px " src="images/tipoevento/'.$result['idtipoevento'].'.jpg"></a>
             <div class="text py-3 px-3">
               <h3><a href="mesas_det.php?id='.$result['idevento'].'">'.$result['nombre'].'  '.$result['appat'].'</a></h3>
+
               <div class="d-flex">
                 <div class="pricing">
                   <p class="price"><span>'.$result['nombreevento'].'</span></p>
@@ -95,6 +97,7 @@ switch ($operacion) {
         // Output a PDF file directly to the browser
         $mpdf->Output('Lista_Mesas.pdf', \Mpdf\Output\Destination::FILE);
         die(json_encode('pdf'));
+
     }
     die(json_encode($vista_mesas));
     break;
@@ -124,6 +127,7 @@ switch ($operacion) {
         $sql.=$art."year(fechaevento) = ".$fecha_arr[1]. " and month(fechaevento) = ".$fecha_arr[0];
         break;
       case 'semana':
+
         $fecha_arr=explode("-", $_POST['fecha']);
         $fecha_1=explode("/", $fecha_arr[0]);
         $fecha_2=explode("/", $fecha_arr[1]);
@@ -136,6 +140,7 @@ switch ($operacion) {
             $art=" and ";
         }
         $sql.=$art." fechaevento >= '".$fecha_1. "' and fechaevento <= '".$fecha_2."'";
+
         break;
       case 'cuatrimestre':
         $fecha_arr=explode("-", $_POST['fecha']);
@@ -172,6 +177,7 @@ switch ($operacion) {
                                     join tipoevento on tipoevento.idtipoevento = eventos.idtipoevento ".$sql);
     $vista_mesas= array();
     $lista="";
+
     while ($result=$eventos->fetch_assoc()) {
         $vista_mesas[]='
         <div class="col-sm col-md-6 col-lg-3">
@@ -179,6 +185,7 @@ switch ($operacion) {
             <a href="mesas_det.php?id='.$result['idevento'].'" class="img-prod"><img class="img-fluid" style="height: 200px; width:255px " src="images/tipoevento/'.$result['idtipoevento'].'.jpg"></a>
             <div class="text py-3 px-3">
               <h3><a href="mesas_det.php?id='.$result['idevento'].'">'.$result['nombre'].'  '.$result['appat'].'</a></h3>
+
               <div class="d-flex">
                 <div class="pricing">
                   <p class="price"><span>'.$result['nombreevento'].'</span></p>
@@ -195,6 +202,7 @@ switch ($operacion) {
         </div>
 
       ';
+
 
         if (isset($_POST['pdf'])) {
             $lista.='

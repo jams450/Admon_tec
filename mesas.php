@@ -1,3 +1,4 @@
+
 <?php
 session_start();
  ?>
@@ -10,12 +11,12 @@ session_start();
   <style media="screen">
 
     .datepicker .datepicker-days table tbody tr:hover {
+
         background-color: #eee;
     }
     .datepicker2 table tr td span {
       width: 100%;
     }
-
 
   </style>
   <body>
@@ -34,6 +35,7 @@ session_start();
     </div>
 
 		<section style="padding-top: 3em;" class="ftco-section bg-light">
+
       <div style="background:white; margin-bottom:30px" class="container">
         <div class="row">
           <div class="col-sm-3">
@@ -67,12 +69,13 @@ session_start();
             </p>
           </div>
           <div class="col-sm-2 text-center">
+
             <p style="padding-top: 15px">
               <a href="#" id="mas_opc" class="">+ Mas Opciones</a>
             </p>
             <p style="padding-top: 10px">
               <a href="#" id="imprimir" class=""> Imprimir</a>
-            </p>
+
           </div>
 
           <div class="col-sm-4" style="display:none" id="div_opcfecha">

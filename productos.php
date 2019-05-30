@@ -1,6 +1,8 @@
+
 <?php
 session_start();
  ?>
+
 <!DOCTYPE html>
 <html >
 
@@ -37,6 +39,7 @@ session_start();
       <div style="background:white; margin-bottom:30px" class="container">
         <div class="row">
           <div class="col-sm-4">
+
           	<div class="form-group">
           		<label for="country">Tipo de evento</label>
           		<div class="select-wrap">
@@ -60,11 +63,13 @@ session_start();
                Resultados
             </p>
           </div>
+
           <div class="col-sm-2 text-center">
             <p style="padding-top: 30px">
               <a href="#" id="imprimir" class=""> Imprimir</a>
             </p>
           </div>
+
 
         </div>
       </div>

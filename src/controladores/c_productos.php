@@ -41,6 +41,9 @@ switch ($operacion) {
                 </div>
               </div>
               <hr>
+              <p class="bottom-area d-flex">
+    							<a href="#" id="articulo_'.$result['idarticulo'].'" class="add-to-cart anadir"><span>Añadir al carrito <i class="ion-ios-add ml-1"></i></span></a>
+    						</p>
             </div>
           </div>
         </div>

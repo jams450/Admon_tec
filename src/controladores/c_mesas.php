@@ -27,7 +27,7 @@ switch ($operacion) {
         $sql.=$art." eventos.idtipoevento = ".$tipo_evento;
     }
 
-    $eventos=$conexion->query("select fechaevento,nombre, appat, nombreevento, eventos.idtipoevento from eventos
+    $eventos=$conexion->query("select idevento,fechaevento,nombre, appat, nombreevento, eventos.idtipoevento from eventos
                                     join clientes on clientes.idcliente=eventos.idcliente
                                     join tipoevento on tipoevento.idtipoevento = eventos.idtipoevento ".$sql);
     //die(json_encode($sql));
@@ -36,9 +36,9 @@ switch ($operacion) {
         $vista_mesas[]='
         <div class="col-sm col-md-6 col-lg-3">
           <div class="product">
-            <a href="#" class="img-prod"><img class="img-fluid" style="height: 200px; width:255px " src="images/tipoevento/'.$result['idtipoevento'].'.jpg"></a>
+            <a href="mesas_det.php?id='.$result['idevento'].'" class="img-prod"><img class="img-fluid" style="height: 200px; width:255px " src="images/tipoevento/'.$result['idtipoevento'].'.jpg"></a>
             <div class="text py-3 px-3">
-              <h3><a href="#">'.$result['nombre'].'  '.$result['appat'].'</a></h3>
+              <h3><a href="mesas_det.php?id='.$result['idevento'].'">'.$result['nombre'].'  '.$result['appat'].'</a></h3>
               <div class="d-flex">
                 <div class="pricing">
                   <p class="price"><span>'.$result['nombreevento'].'</span></p>
@@ -116,7 +116,7 @@ switch ($operacion) {
         $sql.=$art." eventos.idtipoevento = ".$tipo_evento;
     }
 
-    $eventos=$conexion->query("select fechaevento,nombre, appat, nombreevento, eventos.idtipoevento from eventos
+    $eventos=$conexion->query("select idevento,fechaevento,nombre, appat, nombreevento, eventos.idtipoevento from eventos
                                     join clientes on clientes.idcliente=eventos.idcliente
                                     join tipoevento on tipoevento.idtipoevento = eventos.idtipoevento ".$sql);
     $vista_mesas= array();
@@ -124,9 +124,9 @@ switch ($operacion) {
         $vista_mesas[]='
         <div class="col-sm col-md-6 col-lg-3">
           <div class="product">
-            <a href="#" class="img-prod"><img class="img-fluid" style="height: 200px; width:255px " src="images/tipoevento/'.$result['idtipoevento'].'.jpg"></a>
+            <a href="mesas_det.php?id='.$result['idevento'].'" class="img-prod"><img class="img-fluid" style="height: 200px; width:255px " src="images/tipoevento/'.$result['idtipoevento'].'.jpg"></a>
             <div class="text py-3 px-3">
-              <h3><a href="#">'.$result['nombre'].'  '.$result['appat'].'</a></h3>
+              <h3><a href="mesas_det.php?id='.$result['idevento'].'">'.$result['nombre'].'  '.$result['appat'].'</a></h3>
               <div class="d-flex">
                 <div class="pricing">
                   <p class="price"><span>'.$result['nombreevento'].'</span></p>

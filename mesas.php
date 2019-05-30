@@ -4,10 +4,6 @@
   <?php include_once($_SERVER['DOCUMENT_ROOT'].'/views/head.php'); ?>
 
   <style media="screen">
-      .ftco-section {
-      padding: 3em 0;
-      position: relative;
-    }
 
     .bootstrap-datepicker-widget .datepicker-days table tbody tr:hover {
         background-color: #eee;
@@ -34,7 +30,7 @@
       </div>
     </div>
 
-		<section class="ftco-section bg-light">
+		<section style="padding-top: 3em;" class="ftco-section bg-light">
       <div style="background:white; margin-bottom:30px" class="container">
         <div class="row">
           <div class="col-sm-3">

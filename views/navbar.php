@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
     <a class="navbar-brand" href="index.php">Mesa de Regalos </a>
@@ -16,11 +18,17 @@
             <a class="dropdown-item" href="cart.html">Carrito</a>
           </div>
         </li>-->
+        <?php
+          $cantidad=0;
+          if (isset($_SESSION['articulos'])) {
+              $cantidad=count($_SESSION['articulos']);
+          }
+         ?>
         <li class="nav-item"><a href="mesas.php" class="nav-link">Buscar mesas</a></li>
         <li class="nav-item"><a href="productos.php" class="nav-link">Regalos mas solicitados</a></li>
         <li class="nav-item"><a href="registro.php" class="nav-link">Registrarse</a></li>
         <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>
-        <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+        <li class="nav-item cta cta-colored"><a href="carrito.php" class="nav-link"><span class="icon-shopping_cart"></span>[<?=$cantidad?>]</a></li>
 
       </ul>
     </div>

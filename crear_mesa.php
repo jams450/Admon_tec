@@ -45,14 +45,14 @@
 	              <div class="col-md-12">
 	                <div class="form-group">
 	                	<label>Fecha del Evento *</label>
-	                  <input id="fechaevento" class="form-control" name="fechaevento" required="required" type="date" value="" maxlength="80" placeholder="Fecha del Evento (AAAA-MM-DD)*" data-rule-required="true" data-msg-required="Fecha del Evento requerida" autocomplete="off">
+	                  <input id="fechaevento" class="form-control" name="fechaevento" required="required" type="date" value="" maxlength="80" data-rule-required="true" data-msg-required="Fecha del Evento requerida" autocomplete="off">
 	                </div>
                 </div>
 
                 <div class="w-100"></div>
                 <div class="col-md-12 ">
                   <input type="hidden" name="operacion" id="operacion" value="alta_mesa">
-                  <button type="submit" id="nuevamesa" name="nuevamesa" class="btn btn-primary py-3 px-4" id="crear_cliente">Crear Mesa</button>
+                  <button type="submit" id="nuevamesa" name="nuevamesa" class="btn btn-primary py-3 px-4">Crear Mesa</button>
                   <!--<p><a href="#"class="btn btn-primary py-3 px-4">Registrarse</a></p> -->
                 </div>
 	            </div>

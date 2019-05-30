@@ -8,20 +8,20 @@
         if ($result=$comprobacion_correo->fetch_assoc()) {
             $msj="correo_mal";
         } else {*/
-            $fechacierre=date('Y-m-d', strtotime($datos_evento['fechacierre']. ' + 7 days'));
-            $fechaenvio=date('Y-m-d', strtotime($fechacierre.' + 7 days'));;
+            /*$fechacierre=date('Y-m-d', strtotime($datos_evento['fechacierre']. ' + 7 days'));
+            $fechaenvio=date('Y-m-d', strtotime($fechacierre.' + 7 days'));;*/
 
-            $stmt=$conexion->prepare("insert into eventos (idtipoevento,idcliente,fechaevento,fechacierre,fechaenvio) values (?,?,?,?,?)");
+            $stmt=$conexion->prepare("insert into eventos (idtipoevento,idcliente,fechaevento) values (?,?,?)");
             echo $stmt->error;
-            $stmt->bind_param("iisss", $_POST['idtipoevento'], $_POST['idcliente'], $_POST['fechaevento'], $fechacierre, $fechaenvio);
+            $stmt->bind_param("iis", $_POST['idtipoevento'], $_POST['idcliente'], $_POST['fechaevento']);
             $stmt->execute();
 
             if ($stmt->affected_rows) {
                 $msj="exito";
-                session_start();
-                $_SESSION['id_sesion_cliente']=$stmt->insert_id;
+                /*session_start();
+                $_SESSION['id_sesion_cliente']=$result['idcliente'];
                 $_SESSION['nombre_cliente']=$result['nombre'];
-                $_SESSION['appat_cliente']=$result['appat'];
+                $_SESSION['appat_cliente']=$result['appat'];*/
             } else {
                 $msj="error";
             }

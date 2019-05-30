@@ -1,6 +1,7 @@
 <?php
-    /*session_start();
-    if (isset($_SESSION['id_sesion_cliente'])) {
+    session_start();
+    //echo isset($_SESSION['id_sesion_cliente']);
+    /*if (isset($_SESSION['id_sesion_cliente'])) {
         header("location: index.php");
     }*/
 ?>

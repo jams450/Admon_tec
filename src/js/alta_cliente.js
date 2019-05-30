@@ -42,7 +42,7 @@ $('#registro_cliente').click(function(event) {
               title: 'Cliente registrado',
             });
             setTimeout(function(){
-              document.location.href = '/index.php';
+              window.location="index.php";
             }, 1500);
 
             break;

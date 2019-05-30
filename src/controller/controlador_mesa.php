@@ -1,6 +1,7 @@
 <?php
     include_once($_SERVER["DOCUMENT_ROOT"] . "/src/model/conexion.php");
     $operacion = $_POST['operacion'];
+
     switch ($operacion) {
       case 'alta_mesa':
             session_start();
@@ -9,30 +10,38 @@
         if ($result=$comprobacion_correo->fetch_assoc()) {
             $msj="correo_mal";
         } else {*/
-            $datos_evento=$_POST['fechaevento'];
+            $datos=$_POST['datos'];
+            $longitud = count($datos);
+            $result = [];
+            for ($i=0; $i <$longitud ; $i++) {
+                $result[$datos[$i]['name']]=$datos[$i]['value'];
+            }
+            $datos_evento=$result['fechaevento'];
             $fechacierre=date('Y-m-d', strtotime($datos_evento.' + 7 days'));
             $fechaenvio=date('Y-m-d', strtotime($fechacierre.' + 7 days'));
 
-            if (isset($_SESSION['id_sesion_cliente'])) {
-            $stmt=$conexion->prepare("insert into eventos (idtipoevento,idcliente,fechaevento,fechacierre, fechaenvio) values (?,?,?,?,?)");
-            echo $_POST['idtipoevento'];
-            echo $_POST['fechaevento'];
-            echo $fechaenvio;
-            echo $fechacierre;
-            echo $_SESSION['id_sesion_cliente'];
-            //echo $stmt->error;
-            $stmt->bind_param("iisss", $_POST['idtipoevento'], $_SESSION['id_sesion_cliente'], $_POST['fechaevento'], $fechacierre,$fechaenvio);
-            $stmt->execute();
-            echo $stmt->error;
+          if (isset($_SESSION['id_sesion_cliente'])) {
+              $stmt=$conexion->prepare("insert into eventos (idtipoevento,idcliente,fechaevento,fechacierre, fechaenvio) values (?,?,?,?,?)");
+              //echo $stmt->error;
+              $stmt->bind_param("iisss", $result['idtipoevento'], $_SESSION['id_sesion_cliente'], $result['fechaevento'], $fechacierre, $fechaenvio);
+              $stmt->execute();
 
-            if ($stmt->affected_rows) {
-                $msj="exito";
-            } else {
-                $msj="error";
-            }
-            $stmt->close();
-          }else{
-            $msj="Noconectado";
+              if ($stmt->affected_rows) {
+                  $id_row=$stmt->insert_id;
+                  $msj="exito";
+                  for ($i=0; $i < count($_POST['articulo']); $i++) {
+                      $stmt2=$conexion->prepare("insert into mesaderegalos values (NULL,?,?,0,1)");
+                      $stmt2->bind_param("ii", $id_row, $_POST['articulo'][$i]);
+                      $stmt2->execute();
+                      $stmt2->close();
+                  }
+                  die(json_encode($id_row));
+              } else {
+                  $msj="error";
+              }
+              $stmt->close();
+          } else {
+              $msj="Noconectado";
           }
         //}
         break;
@@ -42,7 +51,7 @@
                                on categoria_articulo.idcategoria=articulos.idcategoria where idarticulo= " .$_POST['id']);
         while ($result=$eventos->fetch_assoc()) {
             $salida='
-          <tr class="text-center">
+          <tr class="text-center" id="'.$result['idarticulo'].'">
             <td class="product-remove"><a href="#" class="quitar" id="remove_'.$result['idarticulo'].'"><span class="ion-ios-close "></span></a></td>
             <td  class="image-prod"><div class="img" style="background-image:url(images/productos/'.$result['idarticulo'].'.jpg);"></div></td>
             <td class="product-name">

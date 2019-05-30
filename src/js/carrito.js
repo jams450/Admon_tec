@@ -47,9 +47,20 @@ $('#form_pagar').submit(function(event) {
     .done(function(e) {
       console.log(e);
       if (e == 'exito') {
-        console.log('shido');
+        swal({
+            type: 'success',
+            title: 'Exito',
+            text: 'Venta Ingresada'
+          });
+        setTimeout(function(){
+          window.location="mesas_det.php?id="+evento;
+        },1500);
       }else {
-        console.log(e);
+        swal({
+            type: 'error',
+            title: 'Error',
+            text: e
+          });
       }
     })
   }else {
@@ -61,7 +72,6 @@ $('#form_pagar').submit(function(event) {
       data: {operacion: 'agregar', evento:evento, datos:datos}
     })
     .done(function(e) {
-      console.log(e);
       if (e == 'exito') {
         var correo= $('#correo').val();
         $.ajax({
@@ -70,10 +80,23 @@ $('#form_pagar').submit(function(event) {
           //dataType: 'json',
           data: {operacion: 'correo', correo:correo}
         }).done(function(e) {
-          console.log('shido correo enviado');
+            swal({
+                type: 'success',
+                title: 'Exito',
+                text: 'Venta Ingresada y factura Enviada'
+              });
+
+            setTimeout(function(){
+              window.open('/../../pdf.php?archivo=CFDI', '_blank');
+              window.location="mesas_det.php?id="+evento;
+            },1500);
         })
       }else {
-        console.log(e);
+        swal({
+            type: 'error',
+            title: 'Error',
+            text: e
+          });
       }
     })
   }

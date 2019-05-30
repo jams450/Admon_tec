@@ -23,5 +23,6 @@
 
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="js/sweetalert/sweetalert2.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>

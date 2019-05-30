@@ -30,7 +30,7 @@
         <?php
         if (isset($_SESSION['id_sesion_cliente'])) {
             echo '
-            <li class="nav-item"><a href="login.php" class="nav-link">Crear Mesa</a></li>
+            <li class="nav-item"><a href="crear_mesa.php" class="nav-link">Crear Mesa</a></li>
             <li class="nav-item"><a href="logout.php" class="nav-link">Cerrar Sesion</a></li>
             ';
         } else {

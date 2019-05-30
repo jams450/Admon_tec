@@ -67,8 +67,11 @@ session_start();
             </p>
           </div>
           <div class="col-sm-2 text-center">
-            <p style="padding-top: 30px">
+            <p style="padding-top: 15px">
               <a href="#" id="mas_opc" class="">+ Mas Opciones</a>
+            </p>
+            <p style="padding-top: 10px">
+              <a href="#" id="imprimir" class=""> Imprimir</a>
             </p>
           </div>
 

@@ -43,6 +43,25 @@ $('#buscar').click(function(event) {
 
 });
 
+$('#imprimir').click(function(event) {
+  event.preventDefault();
+  var nombre =$('#nombre').val();
+  var tipo =$('#tipo').val();
+    $.ajax({
+      url: '/src/controladores/c_productos.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {operacion: 'buscar', tipo:tipo, pdf:1}
+    })
+    .done(function(e) {
+      console.log(e);
+      window.open('/../../pdf.php?archivo=Lista_Regalos', '_blank');
+    })
+
+
+});
+
+
 $(document).on('click','.anadir',function(e){
   e.preventDefault();
   var id_art=$(this).attr('id');

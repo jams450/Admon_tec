@@ -36,7 +36,7 @@ session_start();
 		<section style="padding-top: 3em;" class="ftco-section bg-light">
       <div style="background:white; margin-bottom:30px" class="container">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
           	<div class="form-group">
           		<label for="country">Tipo de evento</label>
           		<div class="select-wrap">
@@ -58,6 +58,11 @@ session_start();
           <div class="col-sm-3 text-center">
             <p style="padding-top: 30px" id="resultados">
                Resultados
+            </p>
+          </div>
+          <div class="col-sm-2 text-center">
+            <p style="padding-top: 30px">
+              <a href="#" id="imprimir" class=""> Imprimir</a>
             </p>
           </div>
 

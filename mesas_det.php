@@ -93,6 +93,7 @@ if ($result=$eventos->fetch_assoc()) {
     <section class="ftco-section bg-light">
       <div  class="container">
         <div class="row">
+          <input type="hidden" name="" id="id_even" value=" <?=$datos_evento['idevento']?>">
           <div style="background:white; margin-bottom:30px; padding-top: 35px; border: 1px solid rgba(0, 0, 0, 0.05);" class="col-lg-8 product-details pl-md-5 ftco-animate fadeInUp ftco-animated text-center">
     				<h3 >Mesa de Regalo <?=$datos_evento['nombreevento']?></h3>
     				<p class="price"><span>Cliente : <?=$datos_evento['nombre'].'   '.$datos_evento['appat'].'   '.$datos_evento['apmat']?></span></p>
@@ -113,6 +114,10 @@ if ($result=$eventos->fetch_assoc()) {
     						<span>Fecha de envio</span>
     						<span><?=$datos_evento['fecha_envio']?></span>
     					</p>
+
+                <p class="d-flex">
+                  <a href="#" id="imprimir" class=""> Imprimir</a>
+                </p>
     				</div>
     			</div>
         </div>
@@ -126,7 +131,7 @@ if ($result=$eventos->fetch_assoc()) {
 	    				<table class="table">
 						    <thead class="thead-primary">
 						      <tr class="text-center">
-						        <<th>&nbsp;</th>
+						        <th>&nbsp;</th>
 						        <th>&nbsp;</th>
 						        <th>Producto</th>
 						        <th>Precio</th>
@@ -170,7 +175,7 @@ if ($result=$eventos->fetch_assoc()) {
 	    				<table class="table">
 						    <thead class="thead-primary">
 						      <tr class="text-center">
-						        <<th>&nbsp;</th>
+						        <th>&nbsp;</th>
 						        <th>&nbsp;</th>
 						        <th colspan="2">Producto</th>
 						        <th>Precio</th>

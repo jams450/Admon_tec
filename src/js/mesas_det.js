@@ -20,3 +20,20 @@ $(document).on('click','.comprar',function(e){
 
 
 });
+
+
+$('#imprimir').click(function(event) {
+  event.preventDefault();
+  var nombre =$('#id_even').val();
+    $.ajax({
+      url: '/src/controladores/c_detalle.php',
+      type: 'POST',
+      //dataType: 'json',
+      data: {id: nombre, pdf:1}
+    })
+    .done(function(e) {
+      console.log(e);
+      window.open('/../../pdf.php?archivo=Detalle_Mesa', '_blank');
+    })
+
+});

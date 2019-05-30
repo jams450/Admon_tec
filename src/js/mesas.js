@@ -139,6 +139,53 @@ $('#buscar').click(function(event) {
 });
 
 
+$('#imprimir').click(function(event) {
+  event.preventDefault();
+  var nombre =$('#nombre').val();
+  var tipo =$('#tipo').val();
+  if ($('#div_opcfecha').css('display') == 'none') {
+    $.ajax({
+      url: '/src/controladores/c_mesas.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {operacion: 'buscar', nombre: nombre, tipo:tipo, pdf:1}
+    })
+    .done(function(e) {
+      console.log(e);
+      window.open('/../../pdf.php?archivo=Lista_Mesas', '_blank');
+    })
+  }else {
+    var tipo_fecha=$('input[type=radio][name=tipo_fecha]:checked').val();
+    var fecha="";
+    switch (tipo_fecha) {
+      case 'ano':
+        fecha = $('#ano').val();
+        break;
+      case 'mes':
+        fecha = $('#mes_f').val();
+        break;
+      case 'semana':
+        fecha = $('#semana').val();
+        break;
+      case 'cuatrimestre':
+        fecha = $('#quarter').val();
+        break;
+    }
+
+    $.ajax({
+      url: '/src/controladores/c_mesas.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {operacion: 'buscar_fecha', nombre: nombre, tipo:tipo, fecha_t: tipo_fecha , fecha: fecha , pdf:1}
+    })
+    .done(function(e) {
+        window.open('/../../pdf.php?archivo=Lista_Mesas', '_blank');
+    })
+  }
+
+});
+
+
 $('#mas_opc').click(function(event) {
   event.preventDefault();
   if ($('#div_opcfecha').css('display') == 'none') {

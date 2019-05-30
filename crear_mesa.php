@@ -1,6 +1,8 @@
 <?php
+
     include_once($_SERVER["DOCUMENT_ROOT"] . "/src/model/conexion.php");
     session_start();
+
     /*if (isset($_SESSION['id_sesion_cliente'])) {
         header("location: index.php");
     }*/

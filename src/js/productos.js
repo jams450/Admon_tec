@@ -35,6 +35,9 @@ $('#buscar').click(function(event) {
         $('#vista_productos').append(vista[i]);
       }
       $('#resultados').text( vista.length+ '  Resultados Encontrados');
+      if ( vista.length == 0) {
+        $('#vista_productos').html('<h1 style="padding-top:50px;padding-bottom: 200px;" class="text-center">No se encontraron resultados</h1>');
+      }
     })
 
 

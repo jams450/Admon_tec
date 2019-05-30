@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once($_SERVER["DOCUMENT_ROOT"] . "/src/model/conexion.php");
 
 $id_evento=$_GET['id'];
@@ -38,6 +39,15 @@ if ($result=$eventos->fetch_assoc()) {
         }
 
         $datos_articulos[]=$result;
+    }
+
+    $eventos=$conexion->query("select regalos_mesa.idarticulo,nombre,precio,categoria, cantidad from regalos_mesa
+                              inner join articulos on articulos.idarticulo=regalos_mesa.idarticulo
+                              inner join categoria_articulo on categoria_articulo.idcategoria=articulos.idcategoria
+                              where regalos_mesa.idevento = ".$id_evento." and regalos_mesa.idarticulo not in (select idarticulo from mesaderegalos where idevento= ".$id_evento." ) ");
+    $datos_articulos2= array();
+    while ($result=$eventos->fetch_assoc()) {
+        $datos_articulos2[]=$result;
     }
 }
  ?>
@@ -109,7 +119,7 @@ if ($result=$eventos->fetch_assoc()) {
       </div>
 
     	<div class="container">
-        <h3 style="background:white;border: 1px solid rgba(0, 0, 0, 0.05);" class="text-center ">Regalos enlistados</h3>
+        <h3 style="background:white;border: 1px solid rgba(0, 0, 0, 0.05);" class="text-center "> Regalos Deseados </h3>
         <div class="row">
           <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
     				<div style="background:white; border: 1px solid rgba(0, 0, 0, 0.05);" class="cart-list">
@@ -137,6 +147,48 @@ if ($result=$eventos->fetch_assoc()) {
         						        <td class="price">$ '.$datos_articulos[$i]['precio'].'</td>
                             <td class="price">'.$datos_articulos[$i]['regalados'].' de '.$datos_articulos[$i]['cantidad'].'</td>
         						        <td class="total" style="font-size:30px;">'.$datos_articulos[$i]['estatus'].'</td>
+        						      </tr>
+                        ';
+                    }
+                   ?>
+
+
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+    	</div>
+
+      <br>
+
+      <div class="container">
+        <h3 style="background:white;border: 1px solid rgba(0, 0, 0, 0.05);" class="text-center ">Regalos Regalados</h3>
+        <div class="row">
+          <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+    				<div style="background:white; border: 1px solid rgba(0, 0, 0, 0.05);" class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <<th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th colspan="2">Producto</th>
+						        <th>Precio</th>
+						        <th>Cantidad</th>
+						      </tr>
+						    </thead>
+						    <tbody id="vista_productos">
+                  <?php
+                    for ($i=0; $i < count($datos_articulos2); $i++) {
+                        echo '
+                          <tr class="text-center">
+        						        <td colspan="2" class="image-prod"><div class="img" style="background-image:url(images/productos/'.$datos_articulos2[$i]['idarticulo'].'.jpg);"></div></td>
+        						        <td colspan="2" class="product-name">
+        						        	<h3>'.$datos_articulos2[$i]['nombre'].'</h3>
+        						        	<p>Categoria:    '.$datos_articulos2[$i]['categoria'].'</p>
+        						        </td>
+        						        <td class="price">$ '.$datos_articulos2[$i]['precio'].'</td>
+                            <td class="price">'.$datos_articulos2[$i]['cantidad'].'</td>
         						      </tr>
                         ';
                     }

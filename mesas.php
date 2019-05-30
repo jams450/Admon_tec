@@ -1,3 +1,7 @@
+<?php
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html >
 
@@ -5,13 +9,12 @@
 
   <style media="screen">
 
-    .bootstrap-datepicker-widget .datepicker-days table tbody tr:hover {
+    .datepicker .datepicker-days table tbody tr:hover {
         background-color: #eee;
     }
     .datepicker2 table tr td span {
       width: 100%;
     }
-
 
 
   </style>

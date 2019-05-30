@@ -84,7 +84,18 @@ switch ($operacion) {
         $sql.=$art."year(fechaevento) = ".$fecha_arr[1]. " and month(fechaevento) = ".$fecha_arr[0];
         break;
       case 'semana':
+        $fecha_arr=explode("-", $_POST['fecha']);
+        $fecha_1=explode("/", $fecha_arr[0]);
+        $fecha_2=explode("/", $fecha_arr[1]);
 
+        $fecha_1=$fecha_1[2].'-'.$fecha_1[1].'-'.$fecha_1[0];
+        $fecha_2=$fecha_2[2].'-'.$fecha_2[1].'-'.$fecha_2[0];
+        if ($sql == '') {
+            $art="where ";
+        } else {
+            $art=" and ";
+        }
+        $sql.=$art." fechaevento >= '".$fecha_1. "' and fechaevento <= '".$fecha_2."'";
         break;
       case 'cuatrimestre':
         $fecha_arr=explode("-", $_POST['fecha']);

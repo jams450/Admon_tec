@@ -3,19 +3,24 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/src/model/conexion.php");
 session_start();
 
 $cantidad=0;
+$total=0;
+$iva=0;
+$datos_articulos=array();
 if (isset($_SESSION['articulos'])) {
+    $total=0;
     foreach ($_SESSION['articulos'] as $key => $value) {
         $eventos=$conexion->query("select idarticulo,nombre,precio,categoria from articulos
                               inner join categoria_articulo on categoria_articulo.idcategoria=articulos.idcategoria
                               where idarticulo = " .$value);
-        $total=0;
+
         while ($result=$eventos->fetch_assoc()) {
             $datos_articulos[]=$result;
             $total+=$result['precio'];
         }
-        $iva=$total*0.16;
     }
+    $iva=$total*0.16;
 }
+
 
  ?>
 
@@ -235,7 +240,10 @@ if (isset($_SESSION['articulos'])) {
       						<span>$<?=$iva+$total?></span>
       					</p>
       				</div>
-              <button type="submit" name="button" class="btn btn-primary py-3 px-4">Pagar</button>
+
+              <button type="submit" <?php if (count($datos_articulos)==0) {
+                             echo "disabled";
+                         } ?> name="button" class="btn btn-primary py-3 px-4">Pagar</button>
       			</div>
       		</div>
         </form>

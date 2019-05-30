@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
-    <a class="navbar-brand" href="index.php">Mesa de Regalos </a>
+    <a class="navbar-brand" href="index.php">El detalle perfecto </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="oi oi-menu"></span> Menu
     </button>
@@ -25,6 +25,7 @@
           }
          ?>
         <li class="nav-item"><a href="mesas.php" class="nav-link">Buscar mesas</a></li>
+        <li class="nav-item"><a href="productos_lista.php" class="nav-link">Regalos</a></li>
         <li class="nav-item"><a href="productos.php" class="nav-link">Regalos mas solicitados</a></li>
         <li class="nav-item"><a href="registro.php" class="nav-link">Registrarse</a></li>
         <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>

@@ -1,0 +1,7 @@
+{
+    "require": {
+        "mpdf/mpdf": "^8.0",
+        "arielcr/numero-a-letras": "dev-master",
+        "phpmailer/phpmailer": "^6.0"
+    }
+}

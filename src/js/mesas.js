@@ -55,17 +55,24 @@ $(document).ready(function() {
     autoclose: true,
     language: 'es'});
 
-  $("#semana").datepicker({
-      format: 'dd/mm/yyyy'
-  });
-
-   //Get the value of Start and End of Week
-  $('#semana').on('dp.change', function (e) {
+    $("#semana").datepicker({
+        format: 'dd-mm-yyyy',
+        language: 'es'
+    }).on("changeDate", function(event) {
       var value = $("#semana").val();
-      var firstDate = moment(value, "MM-DD-YYYY").day(1).format("MM-DD-YYYY");
-      var lastDate =  moment(value, "MM-DD-YYYY").day(7).format("MM-DD-YYYY");
-      $("#semana").val(firstDate + " - " + lastDate);
-  });
+      var firstDate = moment(value, "DD-MM-YYYY").day(1).format("DD/MM/YYYY");
+      var lastDate =  moment(value, "DD-MM-YYYY").day(7).format("DD/MM/YYYY");
+      $("#semana").val(firstDate + "-" + lastDate);
+      })
+      .on("hide", function(event) {
+        var value = $("#semana").val();
+        var firstDate = moment(value, "DD-MM-YYYY").day(1).format("DD/MM/YYYY");
+        var lastDate =  moment(value, "DD-MM-YYYY").day(7).format("DD/MM/YYYY");
+        $("#semana").val(firstDate + "-" + lastDate);
+        })
+      ;
+
+
 
 });
 
@@ -87,6 +94,10 @@ $('#buscar').click(function(event) {
         $('#vista_mesas').append(vista[i]);
       }
       $('#resultados').text( vista.length+ '  Resultados Encontrados');
+
+      if ( vista.length == 0) {
+        $('#vista_mesas').html('<h1 style="padding-top:50px;padding-bottom: 200px;" class="text-center">No se encontraron resultados</h1>');
+      }
     })
   }else {
     var tipo_fecha=$('input[type=radio][name=tipo_fecha]:checked').val();
@@ -119,6 +130,9 @@ $('#buscar').click(function(event) {
         $('#vista_mesas').append(vista[i]);
       }
       $('#resultados').text( vista.length+ '  Resultados Encontrados');
+      if ( vista.length == 0) {
+        $('#vista_mesas').html('<h1 style="padding-top:50px;padding-bottom: 200px;" class="text-center">No se encontraron resultados</h1>');
+      }
     })
   }
 

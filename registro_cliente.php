@@ -1,8 +1,8 @@
 <?php
-    session_start();
+    /*session_start();
     if (isset($_SESSION['id_sesion_cliente'])) {
-        header("location: /index.php");
-    }
+        header("location: index.php");
+    }*/
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 
     <?php include_once($_SERVER['DOCUMENT_ROOT'].'/views/navbar.php'); ?>
 
-		<div class="hero-wrap hero-bread" style="background-image: url('images/bg_6.jpg');">
+		<div class="hero-wrap hero-bread" style="background-image: url('images/index_bg.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">

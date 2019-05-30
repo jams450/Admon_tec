@@ -43,7 +43,7 @@ $('#registro_cliente').click(function(event) {
             });
             setTimeout(function(){
               window.location="index.php";
-            }, 1500);
+            }, 10000);
 
             break;
           case 'correo_mal':
